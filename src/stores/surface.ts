@@ -16,7 +16,6 @@ export const useSurfaceStore = defineStore('surface', {
   actions: {
     initWithType(params: InitProps) {
       const data = getInitRoads(params);
-      console.log('-----', data);
       Object.assign(this, data);
     },
   },

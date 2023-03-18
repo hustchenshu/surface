@@ -23,7 +23,7 @@
 
   .statics {
     height: 30px;
-    padding-top: 20px;
+    margin-top: 20px;
     text-align: center;
     position: relative;
 
@@ -33,7 +33,7 @@
       left: 0;
       right: 0;
       height: 2px;
-      bottom: -10px;
+      bottom: 10px;
       background-color: aqua;
     }
 
@@ -42,7 +42,7 @@
       position: absolute;
       width: 4px;
       height: 10px;
-      bottom: -14px;
+      bottom: 6px;
     }
 
     .left{

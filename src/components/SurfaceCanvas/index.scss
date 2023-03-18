@@ -1,26 +1,32 @@
-.page {
-  background: url(@assets/images/sky-1.png);
-  background-size: cover;
-  background-position: center;
-}
 
 .body {
   flex: 1;
-  width: 100%;
-  overflow: scroll;
   position: relative;
-
+  overflow: visible;
+  width: 100%;
   &::-webkit-scrollbar {
     width: 0;
   }
 
+  .full-btn {
+    position: absolute;
+    right: 20px;
+    top: 90px;
+  }
+}
+
+.see-full {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .builds{
   flex: 1;
 }
 .building {
-  min-width: 150px;
+  min-width: 300px;
+  min-height: 700px;
   background: url(@assets/images/build.png);
   background-position: left bottom;
   background-repeat: repeat-x;
@@ -34,7 +40,6 @@
 }
 
 .surface-area {
-  width: 100%;
 
   .road-area {
     flex: 1;
@@ -74,6 +79,7 @@
   }
 }
 
+
 .foot {
   height: 100px;
   margin-bottom: 20px;
@@ -81,4 +87,3 @@
   justify-content: center;
   align-items: center;
 }
-

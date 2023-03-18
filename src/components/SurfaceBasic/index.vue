@@ -47,25 +47,19 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-// import { useSurfaceStore } from '@stores/surface';
+import { useSurfaceStore } from '@stores/surface';
 
 export default defineComponent({
   name: 'SurfaceBasic',
   setup() {
-    // const surface = useSurfaceStore();
-    // console.log({ surface });
+    const surface = useSurfaceStore();
+
     return {
-      // basicInfo: {
-      //   name: surface.name,
-      //   type: surface.type,
-      //   width: surface.maxWidth,
-      //   redLine: surface.maxWidth,
-      // },
       basicInfo: {
-        name: 'sss',
-        type: 0,
-        width: 999,
-        redLine: 998,
+        name: surface.name,
+        type: surface.type,
+        width: surface.maxWidth,
+        redLine: surface.maxWidth,
       },
     };
   },
