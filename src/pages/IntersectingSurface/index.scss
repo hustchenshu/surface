@@ -1,0 +1,84 @@
+.page {
+  background: url(../../assets/sky-1.png);
+  background-size: cover;
+  background-position: center;
+}
+
+.body {
+  flex: 1;
+  width: 100%;
+  overflow: scroll;
+  position: relative;
+
+  &::-webkit-scrollbar {
+    width: 0;
+  }
+
+}
+
+.builds{
+  flex: 1;
+}
+.building {
+  min-width: 150px;
+  background: url(../../assets/build.png);
+  background-position: left bottom;
+  background-repeat: repeat-x;
+  background-size: 300px;
+  flex: 1;
+  margin-bottom: 30px;
+}
+
+.align-right {
+  background-position: right bottom;
+}
+
+.surface-area {
+  width: 100%;
+
+  .road-area {
+    flex: 1;
+  }
+
+  .statics {
+    height: 10px;
+    text-align: center;
+    position: relative;
+    padding-top: 20px;
+
+    .line {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      bottom: -20px;
+      background-color: aqua;
+    }
+
+    .sep {
+      background-color: aqua;
+      position: absolute;
+      width: 4px;
+      height: 10px;
+      bottom: -24px;
+    }
+
+    .left{
+      left: 0;
+    }
+
+    .right {
+      right: 0;
+    }
+  }
+}
+
+.foot {
+  height: 100px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

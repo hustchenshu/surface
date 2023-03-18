@@ -1,0 +1,56 @@
+.road {
+  width: 100px;
+  margin: 0 1px;
+
+  &-selected {
+    background-color: rgba($color: #009900, $alpha: .1);
+  }
+
+  .display {
+    flex: 1;
+    justify-content: flex-end;
+
+    .image{
+      width: 100%;
+    }
+  }
+
+  .bottom {
+    height: 20px;
+    background-color: #262421;
+    backdrop-filter: blur(57px);
+  }
+
+  .statics {
+    height: 30px;
+    padding-top: 20px;
+    text-align: center;
+    position: relative;
+
+    .line {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 2px;
+      bottom: -10px;
+      background-color: aqua;
+    }
+
+    .sep {
+      background-color: aqua;
+      position: absolute;
+      width: 4px;
+      height: 10px;
+      bottom: -14px;
+    }
+
+    .left{
+      left: 0;
+    }
+
+    .right {
+      right: 0;
+    }
+  }
+}

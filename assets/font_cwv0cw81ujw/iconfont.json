@@ -1,0 +1,44 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "12740634",
+      "name": "直行+掉头",
+      "font_class": "zhihangdiaotou",
+      "unicode": "e63d",
+      "unicode_decimal": 58941
+    },
+    {
+      "icon_id": "12740636",
+      "name": "直行",
+      "font_class": "zhihang",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "12740638",
+      "name": "直行+右转",
+      "font_class": "zhihangyouzhuan",
+      "unicode": "e63f",
+      "unicode_decimal": 58943
+    },
+    {
+      "icon_id": "12740641",
+      "name": "直行+左转",
+      "font_class": "zhihangzuozhuan",
+      "unicode": "e640",
+      "unicode_decimal": 58944
+    },
+    {
+      "icon_id": "19990119",
+      "name": "直行",
+      "font_class": "zhihang1",
+      "unicode": "e7e2",
+      "unicode_decimal": 59362
+    }
+  ]
+}
