@@ -7,12 +7,12 @@
   &::-webkit-scrollbar {
     width: 0;
   }
+}
 
-  .full-btn {
-    position: absolute;
-    right: 20px;
-    top: 90px;
-  }
+.full-btn {
+  position: absolute;
+  right: 20px;
+  top: 90px;
 }
 
 .see-full {
@@ -39,6 +39,10 @@
   background-position: right bottom;
 }
 
+.roads {
+  position: relative;
+}
+
 .surface-area {
 
   .road-area {
@@ -48,8 +52,10 @@
   .statics {
     height: 10px;
     text-align: center;
-    position: relative;
-    padding-top: 20px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -40px;
 
     .line {
       width: 100%;
@@ -57,7 +63,7 @@
       left: 0;
       right: 0;
       height: 2px;
-      bottom: -20px;
+      bottom: -16px;
       background-color: aqua;
     }
 
@@ -66,7 +72,7 @@
       position: absolute;
       width: 4px;
       height: 10px;
-      bottom: -24px;
+      bottom: -20px;
     }
 
     .left{

@@ -18,6 +18,7 @@
 /* eslint-disable no-mixed-operators */
 import {
   defineComponent,
+  computed,
 } from 'vue';
 
 // 变量
@@ -25,14 +26,14 @@ let x = 0;
 let y = 0;
 let scale = 1;
 const ulWidth = window.innerWidth;
-const ulHeight = window.innerHeight;
+const ulHeight = window.innerHeight - 50;
 const minScale = 0.1;
 const maxScale = 4;
 let isDown = false; // 按下标识
 const diff = { x: 0, y: 0 }; // 相对于上一次lastPointermove
 let lastPointermove = { x: 0, y: 0 }; // 用于计算diff
 
-let ul = null;
+let ul: Element|null = null;
 export default defineComponent({
   name: 'IntersectionSurface',
   mounted() {
@@ -51,6 +52,7 @@ export default defineComponent({
   },
   setup() {
     const mouseDown = (e) => {
+      console.log('dddd');
       e.preventDefault();
       e.stopPropagation();
       isDown = true;
@@ -141,13 +143,11 @@ li:hover {
 }
 .container {
     position: relative;
-    width: 100vw;
-    height: 100vh;
     overflow: hidden;
+    width: 100vw;
+    height: calc(100vh - 50px);
 }
 .ul {
-    width: 100vw;
-    height: 100vh;
     list-style: none;
     display: flex;
     flex-wrap: wrap;

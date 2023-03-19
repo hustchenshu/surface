@@ -1,23 +1,23 @@
 export enum RoadSurfaceType {
-  QuickRoad = 'quickRoad', // 快速路
-  MainRoad = 'mainRoad', // 主干道
-  SubRoad = 'subRoad', // 次干路
-  Branchway = 'branchway', // 支路
+  QuickRoad = '快速路', // 快速路
+  MainRoad = '主干道', // 主干道
+  SubRoad = '次干路', // 次干路
+  Branchway = '支路', // 支路
 }
 
 export enum RoadType {
-  Big = 'big', // 大车道
-  Stand = 'stand', // 综合车道
-  BusRoad = 'busRoad', // 公交专用道
-  TramcarRoad = 'tramcar', // 有轨电车道
-  Bicycle = 'bicycle', // 非机动车道
-  Walk = 'walk', // 人行道
-  BusStation = 'busStation', // 公交站台
-  SeparateRoad = 'separateRoad', // 隔离带
-  Viaduct = 'viaduct', // 高架桥
-  River = 'river', // 河水
-  Park = 'park', // 停车位
-  Custom = 'custom' // 自定义
+  Big = '大车道', // 大车道
+  Stand = '综合车道', // 综合车道
+  BusRoad = '公交专用道', // 公交专用道
+  TramcarRoad = '有轨电车道', // 有轨电车道
+  Bicycle = '非机动车道', // 非机动车道
+  Walk = '人行道', // 人行道
+  BusStation = '公交站台', // 公交站台
+  SeparateRoad = '隔离带', // 隔离带
+  Viaduct = '高架桥', // 高架桥
+  River = '河水', // 河水
+  Park = '停车位', // 停车位
+  Custom = '自定义' // 自定义
 }
 
 export enum Direciton {
@@ -41,6 +41,10 @@ export enum DirveDirection {
 export interface Image {
   image: string;
   tailstockImage?: string;
+  size?: {
+    width: number | string;
+    height?: number | string;
+  }
 }
 
 export interface DisplayInfo {
@@ -51,6 +55,7 @@ export interface DisplayInfo {
 }
 
 export interface SingleRoad {
+  id: number;
   name?: string;
   width: number;
   bottom: number;

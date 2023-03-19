@@ -1,7 +1,7 @@
 <template>
-  <MouseControlCanvas>
-    <div :class="`body row ${seeFull ? 'see-full' : ''}`">
-      <q-icon name="my_location" class="full-btn" @click="() => seeFull = true"/>
+  <q-icon name="my_location" class="full-btn" @click="seeFull = true"/>
+  <MouseControlCanvas :full="seeFull" @reChange="seeFull = fasle">
+    <div class="body row">
       <div
         class="surface-area row no-wrap"
       >
@@ -12,15 +12,15 @@
 
         <div class="roads column">
           <div class="road-area row no-wrap">
-            <Road v-for="(p, index) in data" :key="index" :info="p"/>
+            <Road v-for="(p, index) in surface.roads" :key="p.id" :index="index" :info="p"/>
           </div>
           <div class="statics" @click="test">
             {{realWidth}}
             <q-badge
-              v-if="realWidth > designWidth"
+              v-if="realWidth > surface.maxWidth"
               color="orange"
               text-color="black"
-              :label="`>${designWidth}`"
+              :label="`>${surface.maxWidth}`"
             />
             <span class="line"></span>
             <span class="left sep"></span>
@@ -37,18 +37,18 @@
   </MouseControlCanvas>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 /* eslint-disable max-len */
 /* eslint-disable no-mixed-operators */
 import {
   computed,
   defineComponent,
+  ref,
 } from 'vue';
 
 import Road from '@components/Road/index.vue';
 import MouseControlCanvas from '@components/MouseControlCanvas/index.vue';
 import { useSurfaceStore } from '@stores/surface';
-
 import { SingleRoad } from '@typings';
 import { capture } from '@tools/capture';
 
@@ -58,23 +58,11 @@ const test = async () => {
 };
 
 const surface = useSurfaceStore();
+const realWidth = surface.roads.reduce(
+  (sum: number, cur: SingleRoad) => sum + Number(cur.width),
+  0,
+);
 
-export default defineComponent({
-  name: 'IntersectionSurface',
-  components: {
-    Road, MouseControlCanvas,
-  },
-
-  setup() {
-    const realWidth = computed(() => surface.roads.reduce((sum: any, cur: SingleRoad) => sum + cur.width, 0));
-    return {
-      designWidth: surface.maxWidth,
-      realWidth,
-      test,
-      data: surface.roads,
-    };
-  },
-});
 </script>
 
 <style lang="scss" scoped>

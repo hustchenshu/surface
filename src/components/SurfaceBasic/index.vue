@@ -4,9 +4,8 @@
       stack-label
       filled
       dense
-      clearable
       standout="bg-teal text-white"
-      v-model="basicInfo.name"
+      v-model="surface.name"
       label="道路名称"
       lazy-rules
     />
@@ -14,9 +13,9 @@
       stack-label
       filled
       dense
-      clearable
+      disable
       standout="bg-teal text-white"
-      v-model="basicInfo.type"
+      v-model="surface.type"
       label="道路类型"
       lazy-rules
     />
@@ -24,46 +23,35 @@
       stack-label
       filled
       dense
-      clearable
+      disable
       standout="bg-teal text-white"
-      v-model="basicInfo.width"
+      v-model="realWidth"
       label="实际宽度"
       type="number"
       lazy-rules
     />
     <q-input
       stack-label
-      filled
       dense
-      clearable
       standout="bg-teal text-white"
-      v-model="basicInfo.redLine"
-      type="number"
+      v-model.number="surface.maxWidth"
       label="设计红线"
       lazy-rules
     />
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { defineComponent } from 'vue';
 import { useSurfaceStore } from '@stores/surface';
+import { SingleRoad } from '@typings';
 
-export default defineComponent({
-  name: 'SurfaceBasic',
-  setup() {
-    const surface = useSurfaceStore();
+const surface = useSurfaceStore();
+const realWidth = surface.roads.reduce(
+  (sum: number, cur: SingleRoad) => sum + Number(cur.width),
+  0,
+);
 
-    return {
-      basicInfo: {
-        name: surface.name,
-        type: surface.type,
-        width: surface.maxWidth,
-        redLine: surface.maxWidth,
-      },
-    };
-  },
-});
 </script>
 
 <style lang="scss" scoped>

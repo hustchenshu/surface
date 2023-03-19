@@ -1,53 +1,59 @@
 <template>
   <div
-    :class="`column road ${selected ? 'road-selected' : ''}`"
-    :style="{width: `${roadInfo.width * 20}px`}"
+    :class="`column road ${selected ? 'road-selected' : ''} ${editorDialog ? 'road-edit': ''}`"
+    :style="{
+      width: `${roadInfo.width * 20}px`,
+      marginBottom: `${roadInfo.bottom * 20}px`
+    }"
     @mouseenter="() => changeSeleted(true)"
     @mouseleave="() => changeSeleted(false)"
   >
+    <MoreMenu :index="index" @showEdit="showEdit" />
     <div class="dirction" v-if="roadInfo.carInfoDireciton">
       <q-icon :name="roadInfo.carInfoDireciton ? 'arrow_upward' : 'arrow_downward'" />
     </div>
-    <div class="display column items-end" v-if="roadInfo.display">
-      <img class="image cursor-pointer" :src="roadInfo.display.image.image" alt="">
+    <div class="display column items-center" v-if="roadInfo.display">
+      <img class="image"
+        :src="roadInfo.display.image.image" alt=""
+        :style="`width: ${roadInfo.display.image.size.width * 20}px`">
     </div>
-    <div class="bottom cursor-pointer"></div>
-    <div class="statics cursor-pointer">
+    <div class="bottom">
+      <div class="border" :style="`height: ${roadInfo.bottom * 20}px`"></div>
+    </div>
+    <div class="statics cursor-pointer" @click="showEdit"
+      :style="`bottom: ${-30 - roadInfo.bottom * 20}px`"
+    >
       {{roadInfo.width}}
-      <q-popup-edit
-        v-model="roadInfo.width"
-        v-slot="scope"
-        buttons
-        :validate="validWidth"
-        @hide="validWidth"
-        label-set="Save"
-        label-cancel="Close"
-      >
-        <q-input
-          filled
-          v-model.number="scope.value"
-          @keyup.enter="scope.set"
-          hint="输入道路宽度"
-          :error="error"
-          :error-message="errorMessage"
-        >
-        </q-input>
-      </q-popup-edit>
       <span class="line"></span>
       <span class="left sep"></span>
       <span class="right sep"></span>
     </div>
   </div>
+   <q-dialog v-model="editorDialog" position="right"
+    square
+    persistent
+  >
+    <RoadEditor :data="roadInfo" />
+   </q-dialog>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import type { PropType } from 'vue';
-import { SingleRoad } from '../../model/index';
+import RoadEditor from '@components/SurfaceEditDialog/index.vue';
+import MoreMenu from '@components/MoreMenu/index.vue';
+import { SingleRoad } from '@typings/index';
 
 export default defineComponent({
   name: 'SingleRoad',
+  components: {
+    RoadEditor,
+    MoreMenu,
+  },
   props: {
+    index: {
+      type: Number,
+    },
     info: {
       type: Object as PropType<SingleRoad>,
     },
@@ -72,8 +78,14 @@ export default defineComponent({
       errorMessage.value = '';
       return true;
     };
+    const editorDialog = ref(false);
+    const showEdit = () => {
+      editorDialog.value = true;
+    };
 
     return {
+      showEdit,
+      editorDialog,
       validWidth,
       error,
       errorMessage,

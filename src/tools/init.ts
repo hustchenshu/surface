@@ -18,8 +18,108 @@ import ParkImage from '@assets/images/xiaopeng.png';
 import BicycleImage from '@assets/images/bicycle.svg';
 import WalkImage from '@assets/images/walk.svg';
 
+const carImageInfo = {
+  image: carImage,
+  tailstockImage: carImage,
+  size: {
+    width: 2.8,
+    height: 1.5,
+  },
+};
+
+const truckImageInfo = {
+  image: TruckImage,
+  tailstockImage: TruckImage,
+  size: {
+    width: 3,
+    height: 3.2,
+  },
+};
+
+const busStationImageInfo = {
+  image: BusStationImage,
+  tailstockImage: BusStationImage,
+  size: {
+    width: 2,
+    height: 3,
+  },
+};
+
+const busImageInfo = {
+  image: BusImage,
+  tailstockImage: BusImage,
+  size: {
+    width: 3,
+    height: 3.2,
+  },
+};
+
+const ParkImageInfo = {
+  image: ParkImage,
+  tailstockImage: ParkImage,
+  size: {
+    width: 5,
+    height: 1.5,
+  },
+};
+
+const RiverImageInfo = {
+  image: RiverImage,
+  tailstockImage: RiverImage,
+  size: {
+    width: '100%',
+    height: 2,
+  },
+};
+
+const SeparateImageInfo = {
+  image: SeparateImage,
+  tailstockImage: SeparateImage,
+  size: {
+    width: 1.5,
+    height: 2,
+  },
+};
+
+const TramcarImageInfo = {
+  image: TramcarImage,
+  tailstockImage: TramcarImage,
+  size: {
+    width: 4,
+    height: 4,
+  },
+};
+
+const ViaductImageInfo = {
+  image: ViaductImage,
+  tailstockImage: ViaductImage,
+  size: {
+    width: 5,
+    height: 4,
+  },
+};
+
+const WalkImageInfo = {
+  image: WalkImage,
+  tailstockImage: WalkImage,
+  size: {
+    width: 1.5,
+    height: 1.8,
+  },
+};
+
+const BicycleImageInfo = {
+  image: BicycleImage,
+  tailstockImage: BicycleImage,
+  size: {
+    width: 1.5,
+    height: 1.8,
+  },
+};
+
 export const getRoad = (type: RoadType, options: Partial<SingleRoad> = {}): SingleRoad => {
   const initValue: SingleRoad = {
+    id: Number(Math.random() * 100000000),
     type,
     width: 3.5,
     bottom: 0.8,
@@ -28,10 +128,7 @@ export const getRoad = (type: RoadType, options: Partial<SingleRoad> = {}): Sing
     case RoadType.Bicycle:
       initValue.width = 3;
       initValue.display = {
-        image: {
-          image: BicycleImage,
-          tailstockImage: BicycleImage,
-        },
+        image: BicycleImageInfo,
         scale: 1,
         position: 0,
         reverse: false,
@@ -40,23 +137,7 @@ export const getRoad = (type: RoadType, options: Partial<SingleRoad> = {}): Sing
     case RoadType.Big:
       initValue.width = 3.75;
       initValue.display = {
-        image: {
-          image: TruckImage,
-          tailstockImage: TruckImage,
-        },
-        scale: 1,
-        position: 0,
-        reverse: false,
-      };
-      initValue.dirveDirection = DirveDirection.Up;
-      initValue.carInfoDireciton = Direciton.Up;
-      break;
-    case RoadType.BusRoad:
-      initValue.display = {
-        image: {
-          image: BusStationImage,
-          tailstockImage: BusStationImage,
-        },
+        image: truckImageInfo,
         scale: 1,
         position: 0,
         reverse: false,
@@ -65,13 +146,20 @@ export const getRoad = (type: RoadType, options: Partial<SingleRoad> = {}): Sing
       initValue.carInfoDireciton = Direciton.Up;
       break;
     case RoadType.BusStation:
+      initValue.display = {
+        image: busStationImageInfo,
+        scale: 1,
+        position: 0,
+        reverse: false,
+      };
+      initValue.dirveDirection = DirveDirection.Up;
+      initValue.carInfoDireciton = Direciton.Up;
+      break;
+    case RoadType.BusRoad:
       initValue.width = 3;
       initValue.bottom = 1.0;
       initValue.display = {
-        image: {
-          image: BusImage,
-          tailstockImage: BusImage,
-        },
+        image: busImageInfo,
         scale: 1,
         position: 0,
         reverse: false,
@@ -80,10 +168,7 @@ export const getRoad = (type: RoadType, options: Partial<SingleRoad> = {}): Sing
     case RoadType.Park:
       initValue.width = 5;
       initValue.display = {
-        image: {
-          image: ParkImage,
-          tailstockImage: ParkImage,
-        },
+        image: ParkImageInfo,
         scale: 1,
         position: 0,
         reverse: false,
@@ -93,10 +178,7 @@ export const getRoad = (type: RoadType, options: Partial<SingleRoad> = {}): Sing
       initValue.width = 5;
       initValue.bottom = -5;
       initValue.display = {
-        image: {
-          image: RiverImage,
-          tailstockImage: RiverImage,
-        },
+        image: RiverImageInfo,
         scale: 1,
         position: 0,
         reverse: false,
@@ -106,10 +188,7 @@ export const getRoad = (type: RoadType, options: Partial<SingleRoad> = {}): Sing
       initValue.width = 2;
       initValue.bottom = 1.0;
       initValue.display = {
-        image: {
-          image: SeparateImage,
-          tailstockImage: SeparateImage,
-        },
+        image: SeparateImageInfo,
         scale: 1,
         position: 0,
         reverse: false,
@@ -117,10 +196,7 @@ export const getRoad = (type: RoadType, options: Partial<SingleRoad> = {}): Sing
       break;
     case RoadType.Stand:
       initValue.display = {
-        image: {
-          image: carImage,
-          tailstockImage: carImage,
-        },
+        image: carImageInfo,
         scale: 1,
         position: 0,
         reverse: false,
@@ -131,10 +207,7 @@ export const getRoad = (type: RoadType, options: Partial<SingleRoad> = {}): Sing
     case RoadType.TramcarRoad:
       initValue.width = 4;
       initValue.display = {
-        image: {
-          image: TramcarImage,
-          tailstockImage: TramcarImage,
-        },
+        image: TramcarImageInfo,
         scale: 1,
         position: 0,
         reverse: false,
@@ -146,10 +219,7 @@ export const getRoad = (type: RoadType, options: Partial<SingleRoad> = {}): Sing
       initValue.width = 7;
       initValue.bottom = 1.0;
       initValue.display = {
-        image: {
-          image: ViaductImage,
-          tailstockImage: ViaductImage,
-        },
+        image: ViaductImageInfo,
         scale: 1,
         position: 0,
         reverse: false,
@@ -159,10 +229,7 @@ export const getRoad = (type: RoadType, options: Partial<SingleRoad> = {}): Sing
       initValue.width = 3;
       initValue.bottom = 1.0;
       initValue.display = {
-        image: {
-          image: WalkImage,
-          tailstockImage: WalkImage,
-        },
+        image: WalkImageInfo,
         scale: 1,
         position: 0,
         reverse: false,
