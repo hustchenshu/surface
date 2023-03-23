@@ -1,7 +1,8 @@
 <template>
-  <q-icon name="my_location" class="full-btn" @click="seeFull = true"/>
-  <MouseControlCanvas :full="seeFull" @reChange="seeFull = fasle">
-    <div class="body row">
+  <q-icon name="home" size="md" class="full-btn cursor-pointer" @click="seeFull = true"/>
+  <q-icon name="download"  size="md" class="capture-btn cursor-pointer" @click="test"/>
+  <MouseControlCanvas :full="seeFull" @reSize="seeFull = false">
+    <div class="body row" id="road-canvas">
       <div
         class="surface-area row no-wrap"
       >
@@ -38,22 +39,17 @@
 </template>
 
 <script lang="ts" setup>
-/* eslint-disable max-len */
-/* eslint-disable no-mixed-operators */
-import {
-  computed,
-  defineComponent,
-  ref,
-} from 'vue';
-
+import { ref } from 'vue';
 import Road from '@components/Road/index.vue';
 import MouseControlCanvas from '@components/MouseControlCanvas/index.vue';
 import { useSurfaceStore } from '@stores/surface';
 import { SingleRoad } from '@typings';
 import { capture } from '@tools/capture';
 
+const seeFull = ref(false);
+
 const test = async () => {
-  // const image = await capture();
+  const image = await capture(true);
   // console.log(image);
 };
 

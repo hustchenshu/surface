@@ -4,6 +4,9 @@
   position: relative;
   overflow: visible;
   width: 100%;
+  background: url(@assets/images/sky-1.png);
+  background-size: cover;
+  background-position: center;
   &::-webkit-scrollbar {
     width: 0;
   }
@@ -13,6 +16,14 @@
   position: absolute;
   right: 20px;
   top: 90px;
+  z-index: 20;
+}
+
+.capture-btn {
+  position: absolute;
+  right: 20px;
+  top: 140px;
+  z-index: 20;
 }
 
 .see-full {
@@ -25,14 +36,14 @@
   flex: 1;
 }
 .building {
-  min-width: 300px;
+  min-width: 200px;
   min-height: 700px;
   background: url(@assets/images/build.png);
   background-position: left bottom;
   background-repeat: repeat-x;
-  background-size: 300px;
+  background-size: 200px;
   flex: 1;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .align-right {
