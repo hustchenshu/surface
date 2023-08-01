@@ -84,7 +84,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
 
     'prefer-promise-reject-errors': 'off',
-    'vue/multi-word-component-names': 'warning',
+    'vue/multi-word-component-names': 'warn',
 
     quotes: ['warn', 'single', { avoidEscape: true }],
 
